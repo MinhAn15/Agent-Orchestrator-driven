@@ -1,0 +1,42 @@
+name: Generate Architecture Diagram
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'docs/architecture.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install system dependencies (Graphviz)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y graphviz
+
+      - name: Install Python dependencies
+        run: pip install diagrams
+
+      - name: Generate architecture diagram
+        run: python docs/architecture.py
+
+      - name: Commit generated diagram
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'ci: regenerate architecture diagram [skip ci]'
+          file_pattern: 'docs/architecture.png'
+          commit_user_name: 'github-actions[bot]'
+          commit_user_email: 'github-actions[bot]@users.noreply.github.com'
