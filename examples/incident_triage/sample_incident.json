@@ -1,0 +1,8 @@
+{
+  "incident_id": "INC-2026-03-001",
+  "severity": "high",
+  "title": "API latency regression in checkout",
+  "repo_owner": "octocat",
+  "repo_name": "Hello-World",
+  "linked_issue": 349
+}
