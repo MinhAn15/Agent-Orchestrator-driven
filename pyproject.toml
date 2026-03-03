@@ -21,6 +21,9 @@ classifiers = [
 ]
 dependencies = []
 
+[project.scripts]
+antigravity = "antigravity_orchestrator.cli:main"
+
 [project.optional-dependencies]
 dev = [
   "pytest>=8",
@@ -43,7 +46,7 @@ target-version = "py311"
 select = ["E", "F", "I", "B", "UP"]
 
 [tool.pytest.ini_options]
-addopts = "-q --cov=src/antigravity --cov-report=term-missing --cov-fail-under=80"
+addopts = "-q --cov=src/antigravity --cov=src/antigravity_orchestrator --cov-report=term-missing --cov-fail-under=80"
 testpaths = ["tests"]
 
 [tool.mypy]

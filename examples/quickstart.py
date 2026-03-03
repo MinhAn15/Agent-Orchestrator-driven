@@ -1,34 +1,29 @@
-"""Quickstart demo: run an ad-hoc incident workflow in one command."""
+"""Quickstart example for deterministic Antigravity orchestration."""
 
 from __future__ import annotations
 
-import json
-
-from antigravity.adhoc import AdHocOrchestrator
+from antigravity_orchestrator.runtime import FixedOrchestrator
 
 
-def main() -> None:
-    orchestrator = AdHocOrchestrator()
-    summary, results = orchestrator.run_template(
-        "incident-response",
-        namespace="quickstart",
-        variables={
-            "team": "Platform",
-            "severity": "P1",
-            "service": "payments-api",
-        },
-        base_context={
-            "environment": "production",
-            "data_classification": "confidential",
-        },
-    )
-
-    print("=== Antigravity Quickstart ===")
-    print(json.dumps(summary.__dict__, indent=2))
-    print("\nStep outcomes:")
-    for result in results:
-        print(f"- [{result.status}] {result.step.title} ({result.step.action_type})")
+def send_alert(payload: dict[str, object]) -> dict[str, object]:
+    return {
+        "message": "Incident alert sent.",
+        "severity": payload.get("severity", "info"),
+        "service": payload.get("service", "unknown"),
+    }
 
 
 if __name__ == "__main__":
-    main()
+    orchestrator = FixedOrchestrator()
+    orchestrator.register_action("alert", send_alert)
+
+    result = orchestrator.run(
+        workflow_name="incident-response",
+        payload={
+            "action_type": "alert",
+            "severity": "high",
+            "service": "billing-api",
+            "environment": "production",
+        },
+    )
+    print(result)
