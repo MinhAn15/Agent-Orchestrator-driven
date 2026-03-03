@@ -71,16 +71,6 @@ cp -r Agent-Orchestrator-driven/connectors/ your_project/connectors/
 
 ### Step 2 — Add a Policy Gate to your existing agent
 
-**Before** (no guardrails):
-
-```python
-# your_project/agent.py
-def run_action(action_type: str, context: dict):
-    return execute(action_type, context)  # dangerous in production
-```
-
-**After** (with Antigravity policy engine):
-
 ```python
 from antigravity.policy import PolicyEngine, Effect
 
