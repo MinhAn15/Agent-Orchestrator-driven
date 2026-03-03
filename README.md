@@ -19,12 +19,12 @@ Antigravity adds the missing production layer **without rewriting your existing 
 
 | Problem you face today | What Antigravity gives you |
 |---|---|
-| Agents take dangerous actions with no checks | **Policy engine** — approve, deny, or escalate any action before it runs |
+| Agents take dangerous actions with no checks | **Policy engine** — allow, deny, or require approval before any action runs |
 | Conversations reset on every request | **Stateful memory** — InMemory, Redis, or Postgres, swappable at runtime |
 | No idea why an agent failed or how much it cost | **Unified observability** — latency, token cost, and quality in one trace |
 | Hard-coded integrations to Slack, DBs, GitHub | **Connector SDK** — plug-and-play adapters, add your own in < 50 lines |
-| Starting from scratch for every new workflow | **Template gallery** — 5 battle-tested workflow templates, load & render in 2 lines |
-| LLM vendor lock-in | **Provider abstraction** — swap OpenAI → Ollama → any DBAPI2 with one line |
+| Starting from scratch for every new workflow | **Template gallery** — battle-tested workflow templates, load and render in 2 lines |
+| LLM vendor lock-in | **Provider abstraction** — swap OpenAI → Ollama with one line |
 
 **Antigravity is the backbone, not the brain — it makes your agents safe, observable, and composable without getting in the way.**
 
@@ -36,11 +36,12 @@ Antigravity adds the missing production layer **without rewriting your existing 
 flowchart LR
     A(["Client / API Gateway"]) --> B(["Planner"])
     B --> C{"Policy Engine"}
-    C -->|"approved"| D(["Executor"])
-    C -->|"rejected"| E(["Audit Log"])
+    C -->|"allow"| D(["Executor"])
+    C -->|"deny"| E(["Audit Log"])
     D --> F(["Tool / Connector Layer"])
     F --> G[("Memory & State Store")]
-    D --> H(["Observability\nlatency · cost · quality"])
+    D --> H(["Observability
+latency · cost · quality"])
     G --> B
 ```
 
@@ -58,10 +59,10 @@ git clone https://github.com/MinhAn15/Agent-Orchestrator-driven.git
 pip install -e ./Agent-Orchestrator-driven
 ```
 
-Or copy only the modules you need directly into your project:
+Or copy only the modules you need:
 
 ```bash
-# Minimal: just the LLM policy engine
+# Minimal: just the LLM engine
 cp Agent-Orchestrator-driven/src/llm_policy.py your_project/
 
 # Connectors only
@@ -70,163 +71,134 @@ cp -r Agent-Orchestrator-driven/connectors/ your_project/connectors/
 
 ### Step 2 — Add a Policy Gate to your existing agent
 
-Before Antigravity, your agent probably looks like this:
+**Before** (no guardrails):
 
 ```python
-# your_project/agent.py  (before)
-def run_action(action: str, payload: dict):
-    # No checks — dangerous in production
-    return execute(action, payload)
+# your_project/agent.py
+def run_action(action_type: str, context: dict):
+    return execute(action_type, context)  # dangerous in production
 ```
 
-After adding Antigravity's policy engine:
+**After** (with Antigravity policy engine):
 
 ```python
-# your_project/agent.py  (after)
-from antigravity.policy import PolicyEngine, Rule, Action
+from antigravity.policy import PolicyEngine, Effect
 
-policy = PolicyEngine(rules=[
-    Rule(pattern="delete_*",  action=Action.ESCALATE),  # flag destructive ops
-    Rule(pattern="send_email", action=Action.ALLOW,
-         condition=lambda ctx: ctx.get("user_verified")),
-    Rule(pattern="*",          action=Action.ALLOW),     # default allow
+policy = PolicyEngine()
+policy.load_rules([
+    {
+        "id": "block-delete-in-prod",
+        "priority": 1,
+        "condition": {"action_type": "delete", "environment": "production"},
+        "effect": "deny",
+        "reason": "Destructive actions are forbidden in production.",
+    },
+    {
+        "id": "require-approval-financial",
+        "priority": 2,
+        "condition": {"domain": "financial"},
+        "effect": "require_approval",
+        "reason": "Financial actions require human sign-off.",
+    },
 ])
 
-def run_action(action: str, payload: dict, context: dict = {}):
-    decision = policy.evaluate(action, context)
-    if not decision.is_allowed:
-        raise PermissionError(f"Action '{action}' blocked: {decision.reason}")
-    return execute(action, payload)
+def run_action(action_type: str, context: dict):
+    eval_ctx = {**context, "action_type": action_type}
+    decision = policy.evaluate(eval_ctx)        # returns PolicyDecision
+
+    if decision.is_denied:
+        raise PermissionError(f"Blocked: {decision.reason}")
+    if decision.requires_approval:
+        request_human_approval(eval_ctx)        # your escalation hook
+
+    return execute(action_type, context)
 ```
 
 ### Step 3 — Swap in Stateful Memory
 
-Replace your in-process dict cache with a persistent backend in one line:
+The `MemoryBackend` interface uses a **namespace + key** model so different workflows never bleed state into each other.
 
 ```python
 from antigravity.memory import create_memory_backend
 
-# Development: in-process dict
+# Local / tests
 memory = create_memory_backend("memory")
 
-# Staging/Production: Redis (requires redis-py)
-memory = create_memory_backend("redis", url="redis://localhost:6379/0")
+# Production Redis
+memory = create_memory_backend("redis", host="localhost", port=6379)
 
-# Anywhere your agents store/retrieve state:
-memory.set("session:user_42", {"history": [...], "preferences": {...}})
-state = memory.get("session:user_42")
+# Production Postgres
+memory = create_memory_backend("postgres", dsn="postgresql://user:pass@host/db")
+
+# Store and retrieve under (namespace, key)
+memory.set("workflow_01", "session_42", {"history": [], "status": "active"})
+state  = memory.get("workflow_01", "session_42")
+keys   = memory.keys("workflow_01")        # list all keys in namespace
 ```
 
 ### Step 4 — Use the LLM Policy Engine
 
-Replace raw OpenAI calls with a provider-agnostic engine:
+Replace raw LLM calls with a provider-agnostic engine that keeps your code LLM-vendor-free:
 
 ```python
-from src.llm_policy import create_engine
+from llm_policy import create_engine  # src/llm_policy.py
 
-# Works with OpenAI
-engine = create_engine("openai", model="gpt-4o-mini")
+engine = create_engine("openai", model="gpt-4o-mini")  # production
+engine = create_engine("ollama", model="llama3")         # local / private
+engine = create_engine("stub")                           # unit tests, no API key
 
-# Or local Ollama — zero code change
-engine = create_engine("ollama", model="llama3")
-
-# Or the offline stub for unit tests
-engine = create_engine("stub")
-
-# Same interface regardless of provider
+# All providers share the same interface
 result = engine.decide(
-    task="Classify this support ticket and suggest next action.",
-    context="You are a support triage agent for a SaaS product."
+    task="Classify this support ticket and suggest the next action.",
+    context="You are a support triage agent for a SaaS product.",
 )
-print(result.content)   # → "Priority: HIGH. Suggested action: escalate to Tier 2."
-print(result.usage)     # → {"prompt_tokens": 42, "completion_tokens": 18, ...}
+print(result.content)   # LLM output
+print(result.provider)  # "openai" | "ollama" | "stub"
+print(result.usage)     # {"prompt_tokens": ..., "completion_tokens": ...}
+
+# Swap provider at runtime without restarting
+from llm_policy import OllamaProvider
+engine.swap_provider(OllamaProvider(model="llama3"))
 ```
 
-### Step 5 — Connect to your tools via Connectors
+### Step 5 — Connect to your tools
 
 ```python
 from connectors.slack_connector import SlackConnector
 from connectors.sql_connector import SQLConnector
 
-# Post a message to Slack
+# Slack via Incoming Webhook
 slack = SlackConnector(webhook_url="https://hooks.slack.com/services/...")
-slack.send_alert("[P1] Database CPU > 90% — triggering incident response")
+slack.send_alert(
+    title="[P1] Database CPU > 90%",
+    body="Incident auto-detected. Triggering remediation runbook.",
+    level="error",   # 'info' | 'warning' | 'error'
+)
 
-# Query your database
-with SQLConnector("postgresql://user:pass@host/db") as db:
-    incidents = db.query(
-        "SELECT * FROM incidents WHERE status = ? ORDER BY created_at DESC",
-        ("open",)
-    )
+# SQLite (default, zero deps)
+with SQLConnector(dsn="app.db") as db:
+    rows = db.query("SELECT * FROM incidents WHERE status = ?", ("open",))
+
+# Postgres (set driver)
+with SQLConnector(dsn="postgresql://user:pass@host/db", driver="psycopg2") as db:
+    rows = db.query("SELECT * FROM incidents WHERE status = %s", ("open",))
 ```
 
 ### Step 6 — Load a workflow template
 
-Use a pre-built workflow template instead of designing from scratch:
-
 ```python
-from templates.gallery import TemplateGallery
+from templates.gallery import get_gallery
 
-gallery = TemplateGallery.load()   # auto-discovers all .md templates
+gallery = get_gallery()          # auto-discovers all .md files in templates/
 
-# List what's available
 for t in gallery.list_all():
     print(f"{t.name:25s}  {t.description}")
 # Incident Response          End-to-end agent workflow for triaging production incidents.
-# Bug Triage                 Automated bug classification and routing to the responsible team.
-# ...
+# Bug Triage                 Automated bug classification and routing.
+# Customer Support           Multi-step support: classify, retrieve docs, escalate.
 
-# Load and render a template with your variables
 template = gallery.get("incident-response")
-workflow = template.render({
-    "team": "Platform Engineering",
-    "severity": "P1",
-    "service": "payments-api",
-})
-print(workflow)  # → fully rendered incident-response runbook
-```
-
-### Minimal end-to-end example
-
-Put it all together in ~30 lines:
-
-```python
-# examples/quickstart_integration.py
-from antigravity.policy import PolicyEngine, Rule, Action
-from antigravity.memory import create_memory_backend
-from src.llm_policy import create_engine
-from connectors.slack_connector import SlackConnector
-
-# 1. Set up components
-policy  = PolicyEngine(rules=[Rule(pattern="*", action=Action.ALLOW)])
-memory  = create_memory_backend("memory")
-llm     = create_engine("stub")           # swap to "openai" in prod
-slack   = SlackConnector(webhook_url="...")  # optional
-
-def handle_user_request(user_id: str, request: str) -> str:
-    # 2. Policy check
-    decision = policy.evaluate("llm_call", {"user_id": user_id})
-    if not decision.is_allowed:
-        return "Request not permitted."
-
-    # 3. Load conversation history
-    history = memory.get(f"history:{user_id}") or []
-
-    # 4. Call LLM
-    result = llm.decide(task=request)
-
-    # 5. Persist state
-    history.append({"role": "assistant", "content": result.content})
-    memory.set(f"history:{user_id}", history)
-
-    # 6. Alert if needed
-    if "escalate" in result.content.lower():
-        slack.send_alert(f"Escalation triggered for user {user_id}")
-
-    return result.content
-
-if __name__ == "__main__":
-    print(handle_user_request("user_42", "My payment is stuck — help!"))
+print(template.render({"team": "Platform", "severity": "P1", "service": "payments-api"}))
 ```
 
 ---
@@ -237,17 +209,14 @@ if __name__ == "__main__":
 
 ### 1. Support Automation
 Automatically triage, route, and resolve repetitive tickets with policy checks and escalation logic.
-- Target: reduce first-response time and ticket deflection rate
 - Example: [`examples/support_automation/`](./examples/)
 
 ### 2. Growth Operations
 Coordinate campaign planning, copy generation, QA, and launch workflows across agents.
-- Target: faster experiment velocity, reduced manual ops overhead
 - Example: [`examples/growth_ops/`](./examples/)
 
 ### 3. Incident Response
 Detect anomalies, fan out diagnostics, and propose remediation runbooks automatically.
-- Target: lower Mean Time to Acknowledge (MTTA) and Mean Time to Resolve (MTTR)
 - Example: [`examples/incident_response/`](./examples/)
 
 ---
@@ -259,35 +228,22 @@ Detect anomalies, fan out diagnostics, and propose remediation runbooks automati
 - Docker & Docker Compose v2
 - An LLM API key (OpenAI, Anthropic, or compatible)
 
-### Steps
-
-**1. Clone the repository**
 ```bash
 git clone https://github.com/MinhAn15/Agent-Orchestrator-driven.git
 cd Agent-Orchestrator-driven
-```
-
-**2. Configure environment**
-```bash
-cp .env.example .env
-# Edit .env: set LLM_API_KEY and any connector credentials
-```
-
-**3. Start the orchestrator**
-```bash
+cp .env.example .env   # set LLM_API_KEY and connector credentials
 docker compose up -d
-# Alternative: make dev
 ```
 
-**4. Trigger a demo workflow**
+Then trigger a demo workflow:
+
 ```bash
 curl -X POST http://localhost:8080/workflows/demo/run \
   -H "Content-Type: application/json" \
   -d '{"input": "run support automation sample"}'
 ```
 
-**5. View dashboard & traces**
-Open [http://localhost:3000](http://localhost:3000) to see the workflow execution graph, latency metrics, and policy audit trail.
+Open [http://localhost:3000](http://localhost:3000) to see the workflow graph, latency metrics, and policy audit trail.
 
 ---
 
@@ -295,12 +251,12 @@ Open [http://localhost:3000](http://localhost:3000) to see the workflow executio
 
 ```
 .
-├── src/              # Core orchestration engine (planner, executor, policy, LLM)
-├── runtime/          # Agentic runtime modules and semantics
-├── connectors/       # Connector SDK + integrations (HTTP, GitHub, Slack, SQL, FS)
+├── src/              # Core engine: policy, memory, LLM provider abstraction
+├── runtime/          # Agentic runtime semantics
+├── connectors/       # Connector SDK: HTTP, Slack, SQL, GitHub, filesystem
 ├── benchmarks/       # Reproducible benchmark suite
 ├── examples/         # End-to-end workflow examples
-├── templates/        # Reusable workflow templates gallery
+├── templates/        # Reusable workflow template gallery
 ├── docs/             # MkDocs documentation source
 └── tests/            # Unit and integration tests
 ```
