@@ -56,3 +56,6 @@ files = ["src", "tests"]
 [[tool.mypy.overrides]]
 module = ["tests.*"]
 disallow_untyped_defs = false
+
+[project.scripts]
+antigravity = "antigravity.cli:main"

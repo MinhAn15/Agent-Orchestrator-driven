@@ -59,6 +59,14 @@ Open `my-workflow.md`, fill in your team name and services. That’s it — this
 python examples/quickstart.py
 ```
 
+Or run the new ad-hoc orchestrator CLI directly:
+
+```bash
+python -m antigravity.cli run incident-response \
+  --vars '{"team":"Platform","service":"payments-api","severity":"P1"}' \
+  --context '{"environment":"production","data_classification":"confidential"}'
+```
+
 You’ll see the policy engine evaluate a request, a skill execute, and state saved to memory — all in one loop.
 
 ---
