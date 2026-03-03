@@ -1,0 +1,51 @@
+[
+  {
+    "id": "wf-01",
+    "name": "single_tool_success",
+    "description": "Simple workflow with one deterministic tool call.",
+    "expected_success": true,
+    "budget_usd": 0.01
+  },
+  {
+    "id": "wf-02",
+    "name": "multi_tool_linear",
+    "description": "Three-tool linear chain with data handoff.",
+    "expected_success": true,
+    "budget_usd": 0.03
+  },
+  {
+    "id": "wf-03",
+    "name": "conditional_branch",
+    "description": "Branching workflow where one branch is taken based on validation.",
+    "expected_success": true,
+    "budget_usd": 0.02
+  },
+  {
+    "id": "wf-04",
+    "name": "retry_after_tool_failure",
+    "description": "Injected transient tool failure; system should recover via retry.",
+    "expected_success": true,
+    "budget_usd": 0.04
+  },
+  {
+    "id": "wf-05",
+    "name": "degraded_fallback",
+    "description": "Primary tool unavailable; fallback tool should complete task.",
+    "expected_success": true,
+    "budget_usd": 0.04
+  },
+  {
+    "id": "wf-06",
+    "name": "long_context_summary",
+    "description": "Large context input requiring chunk + summarize behavior.",
+    "expected_success": true,
+    "budget_usd": 0.05
+  },
+  {
+    "id": "wf-07",
+    "name": "parallel_subtasks",
+    "description": "Parallelizable subtasks aggregated into a final answer.",
+    "expected_success": true,
+    "budget_usd": 0.05
+  }
+]
