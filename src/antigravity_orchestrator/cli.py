@@ -5,29 +5,22 @@ from __future__ import annotations
 import argparse
 import json
 from dataclasses import asdict
-from uuid import uuid4
 
 from antigravity_orchestrator.models import ExecutionResult
+from antigravity_orchestrator.runtime import FixedOrchestrator
 
 
 def run_workflow(workflow_name: str, payload: dict[str, object]) -> ExecutionResult:
     """Minimal API entrypoint for running a workflow."""
-    return ExecutionResult(
-        run_id=str(uuid4()),
-        status="completed",
-        output={
-            "workflow": workflow_name,
-            "inputs": payload,
-            "message": f"Workflow '{workflow_name}' completed in scaffold runtime.",
-        },
-    )
+    orchestrator = FixedOrchestrator()
+    return orchestrator.run(workflow_name=workflow_name, payload=payload)
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="antigravity-orchestrator")
+    parser = argparse.ArgumentParser(prog="antigravity")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    run_parser = subparsers.add_parser("run-workflow", help="Run a workflow")
+    run_parser = subparsers.add_parser("run", help="Run a workflow")
     run_parser.add_argument("workflow_name", help="Workflow name to execute")
     run_parser.add_argument(
         "--payload",
@@ -41,7 +34,7 @@ def main() -> int:
     parser = build_parser()
     args = parser.parse_args()
 
-    if args.command == "run-workflow":
+    if args.command == "run":
         payload = json.loads(args.payload)
         result = run_workflow(args.workflow_name, payload)
         print(json.dumps(asdict(result), default=str, indent=2))

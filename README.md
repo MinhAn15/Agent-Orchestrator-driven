@@ -1,7 +1,7 @@
 # Antigravity
 
 > **The orchestration backbone for production AI agents.**
-> Define rules. Build skills. Wire workflows. Ship.
+> Define rules. Build skills. Run deterministic workflows. Ship.
 
 [![CI](https://github.com/MinhAn15/Agent-Orchestrator-driven/actions/workflows/ci.yml/badge.svg)](https://github.com/MinhAn15/Agent-Orchestrator-driven/actions)
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](./LICENSE)
@@ -57,9 +57,25 @@ Open `my-workflow.md`, fill in your team name and services. That’s it — this
 
 ```bash
 python examples/quickstart.py
+# or after install
+antigravity run incident-response --payload '{"action_type":"alert","service":"billing-api"}'
 ```
 
 You’ll see the policy engine evaluate a request, a skill execute, and state saved to memory — all in one loop.
+
+---
+
+
+## Why this version is stable for Antigravity users
+
+This repository now ships an **opinionated fixed orchestrator runtime** (`FixedOrchestrator`) so teams can automate with minimal setup:
+
+- deterministic execution path (policy check -> action handler -> persisted result)
+- built-in production-safe default policy rules
+- one-command CLI (`antigravity run ...`)
+- one-call Python API for embedding into existing services
+
+This keeps behavior predictable and lowers operational mistakes when shipping agent workflows to production.
 
 ---
 
