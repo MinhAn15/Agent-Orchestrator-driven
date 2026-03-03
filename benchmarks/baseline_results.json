@@ -1,0 +1,1414 @@
+{
+  "summary": {
+    "total_runs": 140,
+    "task_completion_rate": 0.9929,
+    "mean_latency_ms": 1492.58,
+    "mean_cost_usd": 0.00266,
+    "mean_tokens": 1640.71,
+    "determinism_signature": 5557697380949026374,
+    "tool_failure_resilience": 0.95
+  },
+  "runs_per_scenario": 20,
+  "results": [
+    {
+      "scenario_id": "wf-01",
+      "run_index": 0,
+      "success": true,
+      "latency_ms": 1394.77,
+      "cost_usd": 0.00195,
+      "prompt_tokens": 421,
+      "completion_tokens": 661,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-01",
+      "run_index": 1,
+      "success": true,
+      "latency_ms": 1527.43,
+      "cost_usd": 0.00295,
+      "prompt_tokens": 1670,
+      "completion_tokens": 224,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-01",
+      "run_index": 2,
+      "success": true,
+      "latency_ms": 2288.95,
+      "cost_usd": 0.0021,
+      "prompt_tokens": 796,
+      "completion_tokens": 454,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-01",
+      "run_index": 3,
+      "success": true,
+      "latency_ms": 2097.47,
+      "cost_usd": 0.00325,
+      "prompt_tokens": 1335,
+      "completion_tokens": 624,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-01",
+      "run_index": 4,
+      "success": true,
+      "latency_ms": 2002.59,
+      "cost_usd": 0.00399,
+      "prompt_tokens": 1814,
+      "completion_tokens": 635,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-01",
+      "run_index": 5,
+      "success": true,
+      "latency_ms": 1284.85,
+      "cost_usd": 0.00276,
+      "prompt_tokens": 1479,
+      "completion_tokens": 273,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-01",
+      "run_index": 6,
+      "success": true,
+      "latency_ms": 1431.0,
+      "cost_usd": 0.00255,
+      "prompt_tokens": 1093,
+      "completion_tokens": 455,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-01",
+      "run_index": 7,
+      "success": true,
+      "latency_ms": 1345.34,
+      "cost_usd": 0.00236,
+      "prompt_tokens": 1151,
+      "completion_tokens": 315,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-01",
+      "run_index": 8,
+      "success": true,
+      "latency_ms": 464.28,
+      "cost_usd": 0.00155,
+      "prompt_tokens": 568,
+      "completion_tokens": 349,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-01",
+      "run_index": 9,
+      "success": true,
+      "latency_ms": 1099.01,
+      "cost_usd": 0.0031,
+      "prompt_tokens": 1717,
+      "completion_tokens": 262,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-01",
+      "run_index": 10,
+      "success": true,
+      "latency_ms": 2042.02,
+      "cost_usd": 0.00232,
+      "prompt_tokens": 852,
+      "completion_tokens": 520,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-01",
+      "run_index": 11,
+      "success": true,
+      "latency_ms": 2378.45,
+      "cost_usd": 0.00189,
+      "prompt_tokens": 781,
+      "completion_tokens": 361,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-01",
+      "run_index": 12,
+      "success": true,
+      "latency_ms": 1471.79,
+      "cost_usd": 0.00345,
+      "prompt_tokens": 1376,
+      "completion_tokens": 691,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-01",
+      "run_index": 13,
+      "success": true,
+      "latency_ms": 2218.37,
+      "cost_usd": 0.00409,
+      "prompt_tokens": 1938,
+      "completion_tokens": 591,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-01",
+      "run_index": 14,
+      "success": true,
+      "latency_ms": 1169.14,
+      "cost_usd": 0.00415,
+      "prompt_tokens": 1870,
+      "completion_tokens": 674,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-01",
+      "run_index": 15,
+      "success": true,
+      "latency_ms": 2096.68,
+      "cost_usd": 0.00229,
+      "prompt_tokens": 1363,
+      "completion_tokens": 124,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-01",
+      "run_index": 16,
+      "success": true,
+      "latency_ms": 542.3,
+      "cost_usd": 0.0033,
+      "prompt_tokens": 1331,
+      "completion_tokens": 654,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-01",
+      "run_index": 17,
+      "success": true,
+      "latency_ms": 833.0,
+      "cost_usd": 0.00409,
+      "prompt_tokens": 1810,
+      "completion_tokens": 687,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-01",
+      "run_index": 18,
+      "success": true,
+      "latency_ms": 480.01,
+      "cost_usd": 0.00304,
+      "prompt_tokens": 1711,
+      "completion_tokens": 238,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-01",
+      "run_index": 19,
+      "success": true,
+      "latency_ms": 753.78,
+      "cost_usd": 0.00345,
+      "prompt_tokens": 1858,
+      "completion_tokens": 331,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-02",
+      "run_index": 0,
+      "success": true,
+      "latency_ms": 1424.66,
+      "cost_usd": 0.0035,
+      "prompt_tokens": 1868,
+      "completion_tokens": 347,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-02",
+      "run_index": 1,
+      "success": true,
+      "latency_ms": 2196.18,
+      "cost_usd": 0.00383,
+      "prompt_tokens": 2049,
+      "completion_tokens": 376,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-02",
+      "run_index": 2,
+      "success": true,
+      "latency_ms": 1829.0,
+      "cost_usd": 0.00159,
+      "prompt_tokens": 499,
+      "completion_tokens": 422,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-02",
+      "run_index": 3,
+      "success": true,
+      "latency_ms": 598.38,
+      "cost_usd": 0.00159,
+      "prompt_tokens": 517,
+      "completion_tokens": 408,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-02",
+      "run_index": 4,
+      "success": true,
+      "latency_ms": 599.13,
+      "cost_usd": 0.00373,
+      "prompt_tokens": 1614,
+      "completion_tokens": 654,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-02",
+      "run_index": 5,
+      "success": true,
+      "latency_ms": 1645.14,
+      "cost_usd": 0.00319,
+      "prompt_tokens": 1333,
+      "completion_tokens": 594,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-02",
+      "run_index": 6,
+      "success": true,
+      "latency_ms": 1861.16,
+      "cost_usd": 0.00246,
+      "prompt_tokens": 886,
+      "completion_tokens": 564,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-02",
+      "run_index": 7,
+      "success": true,
+      "latency_ms": 2324.41,
+      "cost_usd": 0.00199,
+      "prompt_tokens": 687,
+      "completion_tokens": 482,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-02",
+      "run_index": 8,
+      "success": true,
+      "latency_ms": 1951.89,
+      "cost_usd": 0.00207,
+      "prompt_tokens": 1189,
+      "completion_tokens": 141,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-02",
+      "run_index": 9,
+      "success": true,
+      "latency_ms": 2342.11,
+      "cost_usd": 0.00303,
+      "prompt_tokens": 1220,
+      "completion_tokens": 600,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-02",
+      "run_index": 10,
+      "success": true,
+      "latency_ms": 1504.61,
+      "cost_usd": 0.00215,
+      "prompt_tokens": 839,
+      "completion_tokens": 446,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-02",
+      "run_index": 11,
+      "success": true,
+      "latency_ms": 2052.84,
+      "cost_usd": 0.00346,
+      "prompt_tokens": 2051,
+      "completion_tokens": 190,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-02",
+      "run_index": 12,
+      "success": true,
+      "latency_ms": 1249.29,
+      "cost_usd": 0.00226,
+      "prompt_tokens": 1277,
+      "completion_tokens": 172,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-02",
+      "run_index": 13,
+      "success": true,
+      "latency_ms": 1778.96,
+      "cost_usd": 0.00435,
+      "prompt_tokens": 2095,
+      "completion_tokens": 604,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-02",
+      "run_index": 14,
+      "success": true,
+      "latency_ms": 2392.86,
+      "cost_usd": 0.00393,
+      "prompt_tokens": 1944,
+      "completion_tokens": 509,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-02",
+      "run_index": 15,
+      "success": true,
+      "latency_ms": 2049.24,
+      "cost_usd": 0.00219,
+      "prompt_tokens": 725,
+      "completion_tokens": 549,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-02",
+      "run_index": 16,
+      "success": true,
+      "latency_ms": 1320.66,
+      "cost_usd": 0.00387,
+      "prompt_tokens": 1865,
+      "completion_tokens": 535,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-02",
+      "run_index": 17,
+      "success": true,
+      "latency_ms": 1804.93,
+      "cost_usd": 0.00219,
+      "prompt_tokens": 644,
+      "completion_tokens": 614,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-02",
+      "run_index": 18,
+      "success": true,
+      "latency_ms": 1625.65,
+      "cost_usd": 0.00173,
+      "prompt_tokens": 791,
+      "completion_tokens": 272,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-02",
+      "run_index": 19,
+      "success": true,
+      "latency_ms": 1722.11,
+      "cost_usd": 0.00175,
+      "prompt_tokens": 756,
+      "completion_tokens": 308,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-03",
+      "run_index": 0,
+      "success": true,
+      "latency_ms": 1965.67,
+      "cost_usd": 0.00445,
+      "prompt_tokens": 2081,
+      "completion_tokens": 665,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-03",
+      "run_index": 1,
+      "success": true,
+      "latency_ms": 2044.1,
+      "cost_usd": 0.00233,
+      "prompt_tokens": 761,
+      "completion_tokens": 594,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-03",
+      "run_index": 2,
+      "success": true,
+      "latency_ms": 996.27,
+      "cost_usd": 0.00261,
+      "prompt_tokens": 1070,
+      "completion_tokens": 504,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-03",
+      "run_index": 3,
+      "success": true,
+      "latency_ms": 1408.85,
+      "cost_usd": 0.00245,
+      "prompt_tokens": 1430,
+      "completion_tokens": 152,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-03",
+      "run_index": 4,
+      "success": true,
+      "latency_ms": 1972.18,
+      "cost_usd": 0.00236,
+      "prompt_tokens": 1325,
+      "completion_tokens": 187,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-03",
+      "run_index": 5,
+      "success": true,
+      "latency_ms": 1429.82,
+      "cost_usd": 0.00268,
+      "prompt_tokens": 1297,
+      "completion_tokens": 365,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-03",
+      "run_index": 6,
+      "success": true,
+      "latency_ms": 2302.7,
+      "cost_usd": 0.00199,
+      "prompt_tokens": 724,
+      "completion_tokens": 450,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-03",
+      "run_index": 7,
+      "success": true,
+      "latency_ms": 1924.11,
+      "cost_usd": 0.00287,
+      "prompt_tokens": 1227,
+      "completion_tokens": 516,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-03",
+      "run_index": 8,
+      "success": true,
+      "latency_ms": 1966.9,
+      "cost_usd": 0.00298,
+      "prompt_tokens": 1462,
+      "completion_tokens": 394,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-03",
+      "run_index": 9,
+      "success": true,
+      "latency_ms": 2210.85,
+      "cost_usd": 0.00423,
+      "prompt_tokens": 2136,
+      "completion_tokens": 513,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-03",
+      "run_index": 10,
+      "success": true,
+      "latency_ms": 1423.93,
+      "cost_usd": 0.00124,
+      "prompt_tokens": 483,
+      "completion_tokens": 259,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-03",
+      "run_index": 11,
+      "success": true,
+      "latency_ms": 1023.27,
+      "cost_usd": 0.00245,
+      "prompt_tokens": 1206,
+      "completion_tokens": 318,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-03",
+      "run_index": 12,
+      "success": true,
+      "latency_ms": 929.8,
+      "cost_usd": 0.00269,
+      "prompt_tokens": 972,
+      "completion_tokens": 618,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-03",
+      "run_index": 13,
+      "success": true,
+      "latency_ms": 1354.66,
+      "cost_usd": 0.00247,
+      "prompt_tokens": 876,
+      "completion_tokens": 579,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-03",
+      "run_index": 14,
+      "success": true,
+      "latency_ms": 851.08,
+      "cost_usd": 0.00435,
+      "prompt_tokens": 2001,
+      "completion_tokens": 672,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-03",
+      "run_index": 15,
+      "success": true,
+      "latency_ms": 932.06,
+      "cost_usd": 0.00231,
+      "prompt_tokens": 746,
+      "completion_tokens": 596,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-03",
+      "run_index": 16,
+      "success": true,
+      "latency_ms": 1253.49,
+      "cost_usd": 0.00274,
+      "prompt_tokens": 1288,
+      "completion_tokens": 406,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-03",
+      "run_index": 17,
+      "success": true,
+      "latency_ms": 499.49,
+      "cost_usd": 0.00329,
+      "prompt_tokens": 1502,
+      "completion_tokens": 516,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-03",
+      "run_index": 18,
+      "success": true,
+      "latency_ms": 1941.4,
+      "cost_usd": 0.00278,
+      "prompt_tokens": 1487,
+      "completion_tokens": 276,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-03",
+      "run_index": 19,
+      "success": true,
+      "latency_ms": 728.2,
+      "cost_usd": 0.00256,
+      "prompt_tokens": 1485,
+      "completion_tokens": 166,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-04",
+      "run_index": 0,
+      "success": true,
+      "latency_ms": 2141.49,
+      "cost_usd": 0.00124,
+      "prompt_tokens": 628,
+      "completion_tokens": 147,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-04",
+      "run_index": 1,
+      "success": true,
+      "latency_ms": 1388.26,
+      "cost_usd": 0.00118,
+      "prompt_tokens": 411,
+      "completion_tokens": 281,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-04",
+      "run_index": 2,
+      "success": true,
+      "latency_ms": 1958.71,
+      "cost_usd": 0.00415,
+      "prompt_tokens": 2055,
+      "completion_tokens": 532,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-04",
+      "run_index": 3,
+      "success": true,
+      "latency_ms": 1299.65,
+      "cost_usd": 0.00249,
+      "prompt_tokens": 1286,
+      "completion_tokens": 283,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-04",
+      "run_index": 4,
+      "success": true,
+      "latency_ms": 1541.46,
+      "cost_usd": 0.00282,
+      "prompt_tokens": 1360,
+      "completion_tokens": 390,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-04",
+      "run_index": 5,
+      "success": true,
+      "latency_ms": 1629.33,
+      "cost_usd": 0.0022,
+      "prompt_tokens": 779,
+      "completion_tokens": 518,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-04",
+      "run_index": 6,
+      "success": true,
+      "latency_ms": 1882.49,
+      "cost_usd": 0.00257,
+      "prompt_tokens": 1191,
+      "completion_tokens": 390,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-04",
+      "run_index": 7,
+      "success": true,
+      "latency_ms": 2277.95,
+      "cost_usd": 0.00213,
+      "prompt_tokens": 485,
+      "completion_tokens": 699,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-04",
+      "run_index": 8,
+      "success": true,
+      "latency_ms": 2124.53,
+      "cost_usd": 0.00203,
+      "prompt_tokens": 976,
+      "completion_tokens": 285,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-04",
+      "run_index": 9,
+      "success": true,
+      "latency_ms": 2014.41,
+      "cost_usd": 0.00125,
+      "prompt_tokens": 431,
+      "completion_tokens": 302,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-04",
+      "run_index": 10,
+      "success": true,
+      "latency_ms": 2185.05,
+      "cost_usd": 0.0036,
+      "prompt_tokens": 1968,
+      "completion_tokens": 325,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-04",
+      "run_index": 11,
+      "success": true,
+      "latency_ms": 2030.33,
+      "cost_usd": 0.00207,
+      "prompt_tokens": 706,
+      "completion_tokens": 507,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-04",
+      "run_index": 12,
+      "success": true,
+      "latency_ms": 462.21,
+      "cost_usd": 0.00205,
+      "prompt_tokens": 1174,
+      "completion_tokens": 143,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-04",
+      "run_index": 13,
+      "success": true,
+      "latency_ms": 1527.69,
+      "cost_usd": 0.00183,
+      "prompt_tokens": 459,
+      "completion_tokens": 573,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-04",
+      "run_index": 14,
+      "success": true,
+      "latency_ms": 1566.33,
+      "cost_usd": 0.00191,
+      "prompt_tokens": 976,
+      "completion_tokens": 223,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-04",
+      "run_index": 15,
+      "success": true,
+      "latency_ms": 1285.68,
+      "cost_usd": 0.00204,
+      "prompt_tokens": 641,
+      "completion_tokens": 540,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-04",
+      "run_index": 16,
+      "success": true,
+      "latency_ms": 2052.04,
+      "cost_usd": 0.00198,
+      "prompt_tokens": 1145,
+      "completion_tokens": 129,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-04",
+      "run_index": 17,
+      "success": true,
+      "latency_ms": 1584.03,
+      "cost_usd": 0.00358,
+      "prompt_tokens": 1701,
+      "completion_tokens": 514,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-04",
+      "run_index": 18,
+      "success": true,
+      "latency_ms": 1094.3,
+      "cost_usd": 0.00364,
+      "prompt_tokens": 1497,
+      "completion_tokens": 699,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-04",
+      "run_index": 19,
+      "success": true,
+      "latency_ms": 2293.5,
+      "cost_usd": 0.00142,
+      "prompt_tokens": 683,
+      "completion_tokens": 199,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-05",
+      "run_index": 0,
+      "success": true,
+      "latency_ms": 1809.36,
+      "cost_usd": 0.00146,
+      "prompt_tokens": 510,
+      "completion_tokens": 345,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-05",
+      "run_index": 1,
+      "success": true,
+      "latency_ms": 1381.96,
+      "cost_usd": 0.00135,
+      "prompt_tokens": 484,
+      "completion_tokens": 310,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-05",
+      "run_index": 2,
+      "success": true,
+      "latency_ms": 1729.65,
+      "cost_usd": 0.00226,
+      "prompt_tokens": 1196,
+      "completion_tokens": 231,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-05",
+      "run_index": 3,
+      "success": true,
+      "latency_ms": 1487.0,
+      "cost_usd": 0.00191,
+      "prompt_tokens": 1018,
+      "completion_tokens": 192,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-05",
+      "run_index": 4,
+      "success": true,
+      "latency_ms": 1588.24,
+      "cost_usd": 0.00206,
+      "prompt_tokens": 692,
+      "completion_tokens": 513,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-05",
+      "run_index": 5,
+      "success": true,
+      "latency_ms": 509.81,
+      "cost_usd": 0.00264,
+      "prompt_tokens": 1148,
+      "completion_tokens": 458,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-05",
+      "run_index": 6,
+      "success": true,
+      "latency_ms": 780.3,
+      "cost_usd": 0.00198,
+      "prompt_tokens": 1107,
+      "completion_tokens": 158,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-05",
+      "run_index": 7,
+      "success": true,
+      "latency_ms": 1769.76,
+      "cost_usd": 0.00125,
+      "prompt_tokens": 520,
+      "completion_tokens": 234,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-05",
+      "run_index": 8,
+      "success": true,
+      "latency_ms": 1645.47,
+      "cost_usd": 0.00177,
+      "prompt_tokens": 773,
+      "completion_tokens": 306,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-05",
+      "run_index": 9,
+      "success": true,
+      "latency_ms": 1086.43,
+      "cost_usd": 0.00364,
+      "prompt_tokens": 1875,
+      "completion_tokens": 416,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-05",
+      "run_index": 10,
+      "success": true,
+      "latency_ms": 535.07,
+      "cost_usd": 0.00196,
+      "prompt_tokens": 930,
+      "completion_tokens": 280,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-05",
+      "run_index": 11,
+      "success": true,
+      "latency_ms": 472.45,
+      "cost_usd": 0.00314,
+      "prompt_tokens": 1796,
+      "completion_tokens": 224,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-05",
+      "run_index": 12,
+      "success": true,
+      "latency_ms": 808.95,
+      "cost_usd": 0.00344,
+      "prompt_tokens": 1541,
+      "completion_tokens": 566,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-05",
+      "run_index": 13,
+      "success": true,
+      "latency_ms": 1915.14,
+      "cost_usd": 0.00357,
+      "prompt_tokens": 1995,
+      "completion_tokens": 290,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-05",
+      "run_index": 14,
+      "success": true,
+      "latency_ms": 1112.42,
+      "cost_usd": 0.00386,
+      "prompt_tokens": 1697,
+      "completion_tokens": 656,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-05",
+      "run_index": 15,
+      "success": true,
+      "latency_ms": 2239.28,
+      "cost_usd": 0.00249,
+      "prompt_tokens": 1256,
+      "completion_tokens": 301,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-05",
+      "run_index": 16,
+      "success": true,
+      "latency_ms": 1318.4,
+      "cost_usd": 0.00358,
+      "prompt_tokens": 1743,
+      "completion_tokens": 481,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-05",
+      "run_index": 17,
+      "success": true,
+      "latency_ms": 2000.43,
+      "cost_usd": 0.00303,
+      "prompt_tokens": 1425,
+      "completion_tokens": 445,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-05",
+      "run_index": 18,
+      "success": true,
+      "latency_ms": 647.62,
+      "cost_usd": 0.00354,
+      "prompt_tokens": 1620,
+      "completion_tokens": 554,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-05",
+      "run_index": 19,
+      "success": true,
+      "latency_ms": 1386.55,
+      "cost_usd": 0.00248,
+      "prompt_tokens": 1358,
+      "completion_tokens": 223,
+      "recovered_from_failure": true
+    },
+    {
+      "scenario_id": "wf-06",
+      "run_index": 0,
+      "success": true,
+      "latency_ms": 2303.84,
+      "cost_usd": 0.00371,
+      "prompt_tokens": 1941,
+      "completion_tokens": 400,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-06",
+      "run_index": 1,
+      "success": true,
+      "latency_ms": 613.51,
+      "cost_usd": 0.00134,
+      "prompt_tokens": 523,
+      "completion_tokens": 278,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-06",
+      "run_index": 2,
+      "success": false,
+      "latency_ms": 1409.59,
+      "cost_usd": 0.004,
+      "prompt_tokens": 2185,
+      "completion_tokens": 360,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-06",
+      "run_index": 3,
+      "success": true,
+      "latency_ms": 1464.6,
+      "cost_usd": 0.00148,
+      "prompt_tokens": 669,
+      "completion_tokens": 238,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-06",
+      "run_index": 4,
+      "success": true,
+      "latency_ms": 1102.02,
+      "cost_usd": 0.00201,
+      "prompt_tokens": 554,
+      "completion_tokens": 590,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-06",
+      "run_index": 5,
+      "success": true,
+      "latency_ms": 1577.71,
+      "cost_usd": 0.00145,
+      "prompt_tokens": 596,
+      "completion_tokens": 276,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-06",
+      "run_index": 6,
+      "success": true,
+      "latency_ms": 603.8,
+      "cost_usd": 0.00388,
+      "prompt_tokens": 1660,
+      "completion_tokens": 693,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-06",
+      "run_index": 7,
+      "success": true,
+      "latency_ms": 1585.94,
+      "cost_usd": 0.00178,
+      "prompt_tokens": 675,
+      "completion_tokens": 385,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-06",
+      "run_index": 8,
+      "success": true,
+      "latency_ms": 913.74,
+      "cost_usd": 0.00269,
+      "prompt_tokens": 1492,
+      "completion_tokens": 227,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-06",
+      "run_index": 9,
+      "success": true,
+      "latency_ms": 1765.57,
+      "cost_usd": 0.00221,
+      "prompt_tokens": 1166,
+      "completion_tokens": 229,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-06",
+      "run_index": 10,
+      "success": true,
+      "latency_ms": 1620.37,
+      "cost_usd": 0.00298,
+      "prompt_tokens": 1130,
+      "completion_tokens": 644,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-06",
+      "run_index": 11,
+      "success": true,
+      "latency_ms": 893.3,
+      "cost_usd": 0.00394,
+      "prompt_tokens": 2157,
+      "completion_tokens": 352,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-06",
+      "run_index": 12,
+      "success": true,
+      "latency_ms": 1056.82,
+      "cost_usd": 0.00301,
+      "prompt_tokens": 1665,
+      "completion_tokens": 254,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-06",
+      "run_index": 13,
+      "success": true,
+      "latency_ms": 1845.51,
+      "cost_usd": 0.00273,
+      "prompt_tokens": 1363,
+      "completion_tokens": 345,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-06",
+      "run_index": 14,
+      "success": true,
+      "latency_ms": 1499.17,
+      "cost_usd": 0.0012,
+      "prompt_tokens": 404,
+      "completion_tokens": 297,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-06",
+      "run_index": 15,
+      "success": true,
+      "latency_ms": 1989.57,
+      "cost_usd": 0.00265,
+      "prompt_tokens": 934,
+      "completion_tokens": 624,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-06",
+      "run_index": 16,
+      "success": true,
+      "latency_ms": 1669.45,
+      "cost_usd": 0.00189,
+      "prompt_tokens": 682,
+      "completion_tokens": 432,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-06",
+      "run_index": 17,
+      "success": true,
+      "latency_ms": 2124.1,
+      "cost_usd": 0.00278,
+      "prompt_tokens": 1564,
+      "completion_tokens": 219,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-06",
+      "run_index": 18,
+      "success": true,
+      "latency_ms": 966.26,
+      "cost_usd": 0.00393,
+      "prompt_tokens": 1712,
+      "completion_tokens": 679,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-06",
+      "run_index": 19,
+      "success": true,
+      "latency_ms": 1080.15,
+      "cost_usd": 0.00242,
+      "prompt_tokens": 1408,
+      "completion_tokens": 154,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-07",
+      "run_index": 0,
+      "success": true,
+      "latency_ms": 1428.6,
+      "cost_usd": 0.00222,
+      "prompt_tokens": 720,
+      "completion_tokens": 569,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-07",
+      "run_index": 1,
+      "success": true,
+      "latency_ms": 604.03,
+      "cost_usd": 0.0029,
+      "prompt_tokens": 1075,
+      "completion_tokens": 646,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-07",
+      "run_index": 2,
+      "success": true,
+      "latency_ms": 2075.96,
+      "cost_usd": 0.00366,
+      "prompt_tokens": 1788,
+      "completion_tokens": 489,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-07",
+      "run_index": 3,
+      "success": true,
+      "latency_ms": 1412.25,
+      "cost_usd": 0.00208,
+      "prompt_tokens": 775,
+      "completion_tokens": 461,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-07",
+      "run_index": 4,
+      "success": true,
+      "latency_ms": 843.84,
+      "cost_usd": 0.00335,
+      "prompt_tokens": 1876,
+      "completion_tokens": 268,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-07",
+      "run_index": 5,
+      "success": true,
+      "latency_ms": 1267.53,
+      "cost_usd": 0.00311,
+      "prompt_tokens": 1192,
+      "completion_tokens": 660,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-07",
+      "run_index": 6,
+      "success": true,
+      "latency_ms": 747.1,
+      "cost_usd": 0.00297,
+      "prompt_tokens": 1681,
+      "completion_tokens": 225,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-07",
+      "run_index": 7,
+      "success": true,
+      "latency_ms": 1131.94,
+      "cost_usd": 0.00146,
+      "prompt_tokens": 696,
+      "completion_tokens": 209,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-07",
+      "run_index": 8,
+      "success": true,
+      "latency_ms": 954.73,
+      "cost_usd": 0.00202,
+      "prompt_tokens": 1156,
+      "completion_tokens": 143,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-07",
+      "run_index": 9,
+      "success": true,
+      "latency_ms": 2312.32,
+      "cost_usd": 0.0018,
+      "prompt_tokens": 959,
+      "completion_tokens": 179,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-07",
+      "run_index": 10,
+      "success": true,
+      "latency_ms": 2099.28,
+      "cost_usd": 0.00284,
+      "prompt_tokens": 1060,
+      "completion_tokens": 627,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-07",
+      "run_index": 11,
+      "success": true,
+      "latency_ms": 1658.61,
+      "cost_usd": 0.00329,
+      "prompt_tokens": 1702,
+      "completion_tokens": 368,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-07",
+      "run_index": 12,
+      "success": true,
+      "latency_ms": 2196.28,
+      "cost_usd": 0.00187,
+      "prompt_tokens": 809,
+      "completion_tokens": 328,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-07",
+      "run_index": 13,
+      "success": true,
+      "latency_ms": 1793.73,
+      "cost_usd": 0.00332,
+      "prompt_tokens": 1847,
+      "completion_tokens": 275,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-07",
+      "run_index": 14,
+      "success": true,
+      "latency_ms": 712.83,
+      "cost_usd": 0.00193,
+      "prompt_tokens": 689,
+      "completion_tokens": 447,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-07",
+      "run_index": 15,
+      "success": true,
+      "latency_ms": 689.33,
+      "cost_usd": 0.00305,
+      "prompt_tokens": 1317,
+      "completion_tokens": 538,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-07",
+      "run_index": 16,
+      "success": true,
+      "latency_ms": 2041.94,
+      "cost_usd": 0.00358,
+      "prompt_tokens": 2136,
+      "completion_tokens": 189,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-07",
+      "run_index": 17,
+      "success": true,
+      "latency_ms": 721.59,
+      "cost_usd": 0.00335,
+      "prompt_tokens": 1640,
+      "completion_tokens": 443,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-07",
+      "run_index": 18,
+      "success": true,
+      "latency_ms": 1151.43,
+      "cost_usd": 0.00311,
+      "prompt_tokens": 1661,
+      "completion_tokens": 308,
+      "recovered_from_failure": false
+    },
+    {
+      "scenario_id": "wf-07",
+      "run_index": 19,
+      "success": true,
+      "latency_ms": 2116.47,
+      "cost_usd": 0.0021,
+      "prompt_tokens": 983,
+      "completion_tokens": 313,
+      "recovered_from_failure": false
+    }
+  ]
+}
