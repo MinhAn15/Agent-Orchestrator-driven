@@ -4,8 +4,8 @@
 
 [![CI](https://github.com/MinhAn15/Agent-Orchestrator-driven/actions/workflows/ci.yml/badge.svg)](https://github.com/MinhAn15/Agent-Orchestrator-driven/actions)
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](./LICENSE)
-[![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
-[![Version](https://img.shields.io/badge/version-v0.1.0-green)](https://github.com/MinhAn15/Agent-Orchestrator-driven/releases)
+[![Python](https://img.shields.io/badge/python-3.11%2B-blue)](https://www.python.org/)
+[![Version](https://img.shields.io/badge/version-v1.0.0-brightgreen)](https://github.com/MinhAn15/Agent-Orchestrator-driven/releases)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 
 Antigravity is an open-source orchestration backbone for production-grade multi-agent systems — providing policy enforcement, stateful memory, and unified observability across any LLM provider.
@@ -63,36 +63,31 @@ Detect anomalies, fan out diagnostics, and propose remediation runbooks automati
 ## Quickstart
 
 ### Prerequisites
-
-- Python 3.10+
+- Python 3.11+
 - Docker & Docker Compose v2
 - An LLM API key (OpenAI, Anthropic, or compatible)
 
 ### Steps
 
 **1. Clone the repository**
-
 ```bash
 git clone https://github.com/MinhAn15/Agent-Orchestrator-driven.git
 cd Agent-Orchestrator-driven
 ```
 
 **2. Configure environment**
-
 ```bash
 cp .env.example .env
 # Edit .env: set LLM_API_KEY and any connector credentials
 ```
 
 **3. Start the orchestrator**
-
 ```bash
 docker compose up -d
 # Alternative: make dev
 ```
 
 **4. Trigger a demo workflow**
-
 ```bash
 curl -X POST http://localhost:8080/workflows/demo/run \
   -H "Content-Type: application/json" \
@@ -100,7 +95,6 @@ curl -X POST http://localhost:8080/workflows/demo/run \
 ```
 
 **5. View dashboard & traces**
-
 Open [http://localhost:3000](http://localhost:3000) to see the workflow execution graph, latency metrics, and policy audit trail.
 
 ---
@@ -109,30 +103,15 @@ Open [http://localhost:3000](http://localhost:3000) to see the workflow executio
 
 ```
 .
-├── src/               # Core orchestration engine (planner, executor, policy)
-├── runtime/           # Agentic runtime modules and semantics
-├── connectors/        # Connector SDK + sample integrations
-├── benchmarks/        # Reproducible benchmark suite
-├── examples/          # End-to-end workflow examples
-├── templates/         # Reusable workflow templates
-├── docs/              # MkDocs documentation source
-└── tests/             # Unit and integration tests
+├── src/              # Core orchestration engine (planner, executor, policy)
+├── runtime/          # Agentic runtime modules and semantics
+├── connectors/       # Connector SDK + integrations (HTTP, GitHub, Slack, SQL, FS)
+├── benchmarks/       # Reproducible benchmark suite
+├── examples/         # End-to-end workflow examples
+├── templates/        # Reusable workflow templates gallery
+├── docs/             # MkDocs documentation source
+└── tests/            # Unit and integration tests
 ```
-
----
-
-## Roadmap
-
-| Milestone | Target Version | Status |
-|-----------|---------------|--------|
-| Core planner + executor | v0.1 | ✅ Done |
-| Policy engine (rule-based) | v0.2 | 🔄 In progress |
-| Memory backends (Redis, Postgres) | v0.2 | 🔄 In progress |
-| Connector SDK + 5 built-in connectors | v0.3 | 📋 Planned |
-| Public reproducible benchmark suite | v0.3 | 📋 Planned |
-| LLM-native adaptive policy engine | v0.4 | 📋 Planned |
-| Template gallery + community contributions | v0.5 | 📋 Planned |
-| Stable v1.0 release | v1.0 | 📋 Planned |
 
 ---
 
