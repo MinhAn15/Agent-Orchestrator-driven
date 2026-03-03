@@ -1,98 +1,151 @@
 # Antigravity
 
-[![CI](https://img.shields.io/badge/CI-passing-brightgreen)](https://github.com/your-org/antigravity/actions)
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](./LICENSE)
-[![Docs](https://img.shields.io/badge/docs-online-blueviolet)](https://docs.antigravity.dev)
-[![Version](https://img.shields.io/badge/version-v0.1.0-orange)](https://github.com/your-org/antigravity/releases)
+> **Open-source agent orchestration for production multi-agent systems**
 
-Antigravity orchestrates multi-agent workflows with policy, memory, and observability.
+[![CI](https://github.com/MinhAn15/Agent-Orchestrator-driven/actions/workflows/ci.yml/badge.svg)](https://github.com/MinhAn15/Agent-Orchestrator-driven/actions)
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](./LICENSE)
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
+[![Version](https://img.shields.io/badge/version-v0.1.0-green)](https://github.com/MinhAn15/Agent-Orchestrator-driven/releases)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 
-![Antigravity demo GIF](https://placehold.co/1200x675?text=Antigravity+Demo+GIF)
+Antigravity is an open-source orchestration backbone for production-grade multi-agent systems — providing policy enforcement, stateful memory, and unified observability across any LLM provider.
 
-> Demo link: https://example.com/antigravity-demo
+---
 
-## Why now
+## Architecture
 
-Teams are deploying AI agents across support, operations, and product workflows, but most stacks still look like disconnected scripts. As organizations scale agent usage, they need governance, predictable execution, and measurable outcomes.
-
-## Why Antigravity
-
-Antigravity provides an orchestration backbone for production agent systems:
-
-- **Policy-aware execution** to enforce guardrails and approvals.
-- **Stateful memory** so workflows retain context across runs.
-- **Unified observability** for latency, quality, and cost insights.
-- **Composable toolchains** that connect agents to real business systems.
-
-## Quantified use-cases
-
-1. **Support automation**
-   - Auto-triage and resolve repetitive tickets with policy checks.
-   - **Result:** 42% faster first response time, 31% ticket deflection, 18% lower cost per resolution.
-
-2. **Growth operations**
-   - Coordinate campaign planning, copy generation, QA, and launch workflows.
-   - **Result:** 3.2x faster experiment velocity, 27% increase in qualified leads, 22% reduction in manual ops time.
-
-3. **Incident response**
-   - Detect anomalies, fan out diagnostics, and propose remediation runbooks.
-   - **Result:** 48% reduction in mean time to acknowledge (MTTA), 35% reduction in mean time to resolve (MTTR), 25% fewer repeat incidents.
-
-## Architecture at a glance
-
-```text
-Gateway/API
-  -> Planner
-  -> Executor
-  -> Tools/Connectors
-  -> Memory/State
-  -> Observability
+```mermaid
+flowchart LR
+    A(["Client / API Gateway"]) --> B(["Planner"])
+    B --> C{"Policy Engine"}
+    C -->|"approved"| D(["Executor"])
+    C -->|"rejected"| E(["Audit Log"])
+    D --> F(["Tool / Connector Layer"])
+    F --> G[("Memory & State Store")]
+    D --> H(["Observability\nlatency · cost · quality"])
+    G --> B
 ```
 
-## Quickstart in 5 minutes
+---
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-org/antigravity.git
-   cd antigravity
-   ```
+## Why Antigravity?
 
-2. **Setup environment**
-   ```bash
-   cp .env.example .env
-   # Edit .env with your provider and connector credentials
-   ```
+Most AI agent stacks are disconnected scripts — they work in demos but break under real production load. Antigravity solves this with:
 
-3. **Run local orchestrator**
-   ```bash
-   docker compose up -d
-   # or: make dev
-   ```
+- **Policy-aware execution** — enforce guardrails, human-in-the-loop approvals, and access controls before any tool is called.
+- **Stateful memory** — workflows retain context across runs, restarts, and agent handoffs.
+- **Unified observability** — track latency, token cost, and output quality in one place.
+- **Composable connectors** — plug agents into your existing business systems (CRM, ticketing, data warehouses).
 
-4. **Trigger demo workflow**
-   ```bash
-   curl -X POST http://localhost:8080/workflows/demo/run \
-     -H "Content-Type: application/json" \
-     -d '{"input":"run support automation sample"}'
-   ```
+---
 
-5. **Check execution and traces**
-   - Open `http://localhost:3000` for dashboard and workflow traces.
+## Use Cases
 
-## Roadmap to 100k stars
+> **Note:** The figures below are illustrative targets based on internal prototypes, not externally validated benchmarks. Reproducible benchmarks are in progress — see [`benchmarks/`](./benchmarks/).
 
-- **Open-source strategy**
-  - Keep core orchestration engine fully open under a permissive license.
-  - Publish RFCs for planner, policy engine, and memory backends.
+### 1. Support Automation
+Automatically triage, route, and resolve repetitive tickets with policy checks and escalation logic.
+- Target: reduce first-response time and ticket deflection rate
+- Example: [`examples/support_automation/`](./examples/)
 
-- **Community templates**
-  - Launch a template gallery for common workflows (support, sales, SRE, analytics).
-  - Accept curated community templates with quality scoring and badges.
+### 2. Growth Operations
+Coordinate campaign planning, copy generation, QA, and launch workflows across agents.
+- Target: faster experiment velocity, reduced manual ops overhead
+- Example: [`examples/growth_ops/`](./examples/)
 
-- **Benchmark transparency**
-  - Maintain public, reproducible benchmarks (latency, reliability, cost).
-  - Compare baseline single-agent pipelines vs multi-agent orchestration.
+### 3. Incident Response
+Detect anomalies, fan out diagnostics, and propose remediation runbooks automatically.
+- Target: lower Mean Time to Acknowledge (MTTA) and Mean Time to Resolve (MTTR)
+- Example: [`examples/incident_response/`](./examples/)
 
-- **Release cadence**
-  - Ship weekly canary builds, monthly stable releases, and quarterly roadmap reviews.
-  - Publish changelogs with migration guides and performance deltas.
+---
+
+## Quickstart
+
+### Prerequisites
+
+- Python 3.10+
+- Docker & Docker Compose v2
+- An LLM API key (OpenAI, Anthropic, or compatible)
+
+### Steps
+
+**1. Clone the repository**
+
+```bash
+git clone https://github.com/MinhAn15/Agent-Orchestrator-driven.git
+cd Agent-Orchestrator-driven
+```
+
+**2. Configure environment**
+
+```bash
+cp .env.example .env
+# Edit .env: set LLM_API_KEY and any connector credentials
+```
+
+**3. Start the orchestrator**
+
+```bash
+docker compose up -d
+# Alternative: make dev
+```
+
+**4. Trigger a demo workflow**
+
+```bash
+curl -X POST http://localhost:8080/workflows/demo/run \
+  -H "Content-Type: application/json" \
+  -d '{"input": "run support automation sample"}'
+```
+
+**5. View dashboard & traces**
+
+Open [http://localhost:3000](http://localhost:3000) to see the workflow execution graph, latency metrics, and policy audit trail.
+
+---
+
+## Project Structure
+
+```
+.
+├── src/               # Core orchestration engine (planner, executor, policy)
+├── runtime/           # Agentic runtime modules and semantics
+├── connectors/        # Connector SDK + sample integrations
+├── benchmarks/        # Reproducible benchmark suite
+├── examples/          # End-to-end workflow examples
+├── templates/         # Reusable workflow templates
+├── docs/              # MkDocs documentation source
+└── tests/             # Unit and integration tests
+```
+
+---
+
+## Roadmap
+
+| Milestone | Target Version | Status |
+|-----------|---------------|--------|
+| Core planner + executor | v0.1 | ✅ Done |
+| Policy engine (rule-based) | v0.2 | 🔄 In progress |
+| Memory backends (Redis, Postgres) | v0.2 | 🔄 In progress |
+| Connector SDK + 5 built-in connectors | v0.3 | 📋 Planned |
+| Public reproducible benchmark suite | v0.3 | 📋 Planned |
+| LLM-native adaptive policy engine | v0.4 | 📋 Planned |
+| Template gallery + community contributions | v0.5 | 📋 Planned |
+| Stable v1.0 release | v1.0 | 📋 Planned |
+
+---
+
+## Contributing
+
+Contributions are very welcome! Please read [CONTRIBUTING.md](./CONTRIBUTING.md) before submitting.
+
+- **Bug reports** → [Open an issue](https://github.com/MinhAn15/Agent-Orchestrator-driven/issues)
+- **Feature requests** → [Start a discussion](https://github.com/MinhAn15/Agent-Orchestrator-driven/discussions)
+- **Pull requests** → Follow the PR template in [`.github/`](./.github/)
+
+---
+
+## License
+
+[Apache 2.0](./LICENSE) © 2026 MinhAn15
