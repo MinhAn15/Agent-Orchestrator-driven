@@ -7,6 +7,7 @@ import json
 from uuid import uuid4
 
 from antigravity.adhoc import AdHocOrchestrator
+from antigravity.mcp_stdio import run_stdio_loop
 
 
 def _json_object(raw: str) -> dict[str, str]:
@@ -35,6 +36,9 @@ def build_parser() -> argparse.ArgumentParser:
         type=_json_object,
         help="Policy context as JSON object (environment, domain, data_classification, ...)",
     )
+
+    mcp_parser = sub.add_parser("mcp", help="Run MCP-compatible stdio JSON-RPC server")
+    mcp_parser.add_argument("--stdio", action="store_true", help="Enable stdio transport")
     return parser
 
 
@@ -66,6 +70,11 @@ def main() -> int:
             ],
         }, indent=2))
         return 0
+
+    if args.command == "mcp":
+        if args.stdio:
+            return run_stdio_loop()
+        parser.error("mcp currently requires --stdio")
 
     parser.print_help()
     return 1
