@@ -61,6 +61,14 @@ python examples/quickstart.py
 antigravity run incident-response --payload '{"action_type":"alert","service":"billing-api"}'
 ```
 
+Or run the new ad-hoc orchestrator CLI directly:
+
+```bash
+python -m antigravity.cli run incident-response \
+  --vars '{"team":"Platform","service":"payments-api","severity":"P1"}' \
+  --context '{"environment":"production","data_classification":"confidential"}'
+```
+
 You’ll see the policy engine evaluate a request, a skill execute, and state saved to memory — all in one loop.
 
 ---
