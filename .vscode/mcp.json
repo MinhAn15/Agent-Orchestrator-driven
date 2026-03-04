@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "antigravity": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["-m", "antigravity.cli", "mcp", "--stdio"]
+    }
+  }
+}
