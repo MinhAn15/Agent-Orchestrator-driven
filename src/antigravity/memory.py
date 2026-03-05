@@ -283,17 +283,23 @@ def create_memory_backend(backend_type: str = "memory", **kwargs: Any) -> Memory
     """Create a memory backend by name.
 
     Args:
-        backend_type: One of 'memory', 'redis', 'postgres'.
+        backend_type: One of 'memory', 'redis', 'postgres', 'semantic'.
         **kwargs: Passed to the backend constructor.
 
     Returns:
         A MemoryBackend instance.
     """
+    if backend_type == "semantic":
+        from .memory_semantic import SemanticMemory
+
+        return SemanticMemory(**kwargs)
+
     backends: dict[str, type[MemoryBackend]] = {
         "memory": InMemoryBackend,
         "redis": RedisBackend,
         "postgres": PostgresBackend,
     }
     if backend_type not in backends:
-        raise ValueError(f"Unknown backend '{backend_type}'. Choose from: {list(backends)}")
+        supported = [*backends.keys(), "semantic"]
+        raise ValueError(f"Unknown backend '{backend_type}'. Choose from: {supported}")
     return backends[backend_type](**kwargs)
