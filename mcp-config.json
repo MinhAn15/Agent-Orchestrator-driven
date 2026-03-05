@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Universal MCP config — works with any MCP-compatible AI client",
+  "mcpServers": {
+    "antigravity": {
+      "command": "python",
+      "args": ["-m", "antigravity.cli", "mcp", "--stdio"],
+      "transport": "stdio",
+      "env": {
+        "LLM_PROVIDER": "",
+        "OPENAI_API_KEY": ""
+      }
+    }
+  }
+}

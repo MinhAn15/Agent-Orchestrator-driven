@@ -1,2 +1,43 @@
+# ── Python ───────────────────────────────────────────────────────
 __pycache__/
 *.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ── Virtual environments ────────────────────────────────────────
+.venv/
+venv/
+env/
+
+# ── IDE / Editor ─────────────────────────────────────────────────
+.idea/
+*.swp
+*.swo
+*~
+
+# ── Environment & secrets ────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ── Testing & quality ────────────────────────────────────────────
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# ── Docs build ───────────────────────────────────────────────────
+site/
+
+# ── Runtime artifacts ────────────────────────────────────────────
+.checkpoints/
+*.log
+
+# ── OS ───────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db

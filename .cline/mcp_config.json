@@ -1,12 +1,11 @@
 {
-  "servers": {
+  "mcpServers": {
     "antigravity": {
-      "type": "stdio",
       "command": "python",
       "args": ["-m", "antigravity.cli", "mcp", "--stdio"],
       "env": {
-        "LLM_PROVIDER": "${env:LLM_PROVIDER}",
-        "OPENAI_API_KEY": "${env:OPENAI_API_KEY}"
+        "LLM_PROVIDER": "${LLM_PROVIDER}",
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}"
       }
     }
   }
