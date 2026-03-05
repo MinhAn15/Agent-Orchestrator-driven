@@ -4,10 +4,15 @@ from __future__ import annotations
 
 import argparse
 import json
+from pathlib import Path
 from uuid import uuid4
 
 from antigravity.adhoc import AdHocOrchestrator
+from antigravity.dag_engine import DagEngine
 from antigravity.mcp_stdio import run_stdio_loop
+from connectors.github_connector import GitHubConnector
+from connectors.http_connector import HTTPConnector
+from connectors.registry import ConnectorRegistry
 
 
 def _json_object(raw: str) -> dict[str, str]:
@@ -47,6 +52,27 @@ def main() -> int:
     args = parser.parse_args()
 
     if args.command == "run":
+        template_path = Path(args.template)
+        if template_path.suffix.lower() in {".yaml", ".yml"}:
+            registry = ConnectorRegistry()
+            registry.register(HTTPConnector())
+            registry.register(GitHubConnector())
+            engine = DagEngine(registry=registry)
+            dag_result = engine.run_template(template_path, variables=args.vars)
+            print(json.dumps({
+                "workflow_id": dag_result.workflow_id,
+                "namespace": dag_result.workflow_id,
+                "nodes": [
+                    {
+                        "node_id": node.node_id,
+                        "status": node.status,
+                        "output": node.output,
+                    }
+                    for node in dag_result.node_results
+                ],
+            }, indent=2))
+            return 0
+
         orchestrator = AdHocOrchestrator()
         summary, results = orchestrator.run_template(
             args.template,
