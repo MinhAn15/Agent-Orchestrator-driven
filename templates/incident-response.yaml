@@ -1,0 +1,53 @@
+workflow_id: incident-response
+vars:
+  severity: SEV-2
+  owner: platform-oncall
+  include_postmortem: true
+
+nodes:
+  - id: detect
+    skill: http
+    input:
+      method: GET
+      url: https://status.github.com/api/status.json
+
+  - id: blast-radius
+    skill: github
+    depends_on: [detect]
+    parallel_with: [open-channel]
+    input:
+      operation: list_open_issues
+      owner: octocat
+      repo: Hello-World
+
+  - id: open-channel
+    skill: http
+    depends_on: [detect]
+    parallel_with: [blast-radius]
+    input:
+      method: POST
+      url: https://httpbin.org/post
+      json:
+        workflow: incident-response
+        owner: "{owner}"
+        severity: "{severity}"
+
+  - id: mitigation
+    skill: http
+    depends_on: [blast-radius, open-channel]
+    input:
+      method: POST
+      url: https://httpbin.org/post
+      json:
+        action: execute-runbook
+
+  - id: postmortem
+    skill: http
+    depends_on: [mitigation]
+    condition: vars.get("include_postmortem", False)
+    input:
+      method: POST
+      url: https://httpbin.org/post
+      json:
+        action: schedule-postmortem
+        owner: "{owner}"

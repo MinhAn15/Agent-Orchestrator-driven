@@ -50,3 +50,8 @@ class ConnectorRegistry:
     def list_connectors(self) -> Iterable[str]:
         for name, version in sorted(self._latest_version.items()):
             yield f"{name}@{version}"
+
+
+def resolve_skill(registry: ConnectorRegistry, skill_name: str, version: str | None = None) -> BaseConnector:
+    """Resolve a DAG skill name to a connector implementation."""
+    return registry.get(skill_name, version=version)
