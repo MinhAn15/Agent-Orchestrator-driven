@@ -21,15 +21,16 @@ classifiers = [
 ]
 dependencies = []
 
-[project.scripts]
-antigravity = "antigravity_orchestrator.cli:main"
-
 [project.optional-dependencies]
 dev = [
   "pytest>=8",
   "pytest-cov",
   "ruff",
   "mypy",
+]
+semantic = [
+  "chromadb>=0.4",
+  "sentence-transformers>=3.0",
 ]
 
 [tool.setuptools]
